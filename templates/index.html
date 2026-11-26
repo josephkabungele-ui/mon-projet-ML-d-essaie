@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDICTION DES REUSSITE</title>
+    <link rel="stylesheet" type="text/CSS" href="{{url_for('static', filename='style.css')}}"
+</head>
+<body><main>
+    <p class="tag">MINI PROJET IA</p>
+    <h1>prediction de la reussite d'un etudiant</h1>
+    <p>Renseigner les heures et les notes</p>
+    <form method="post" action="{{url_for('index')}}">
+        <label for="heures">Nombre d'heures d'etudes</label>
+        <input id="heures" type="number" name="heures_d'etudes" min="0" max="10" required value="{{heures}}">
+        <label for="note">Note de l'etudiant</label>
+        <input id="note" type="number" name="note_partiel" min="0" max="10" required value="{{note}}">
+        <button type="submit">PREDIRE</button>
+
+    </form>
+    {% if erreur %}<p class="erreur" role="alert">{{erreur}}</p>{% endif %}
+    {% if resultat %}<section class="prediction" aria-live="polite">
+        <p>Resultat</p><h2>{{resultat}}</h2>
+    </section>{% endif %}
+</main>
+    
+</body>
+</html>
